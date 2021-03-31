@@ -19,19 +19,26 @@
     <link rel="stylesheet" type="text/css" href="./style.css/global.css">
     <link rel="stylesheet" type="text/css" href="./style.css/container.css">
     <link rel="stylesheet" type="text/css" href="./style.css/form.css">
-    <link rel="stylesheet" type="text/css" href="./">
+    <link rel="stylesheet" type="text/css" href="./style.css/section.css">
+    <link rel="stylesheet" type="text/css" href="./style.css/mode.css">
     <script defer src="./script.js"></script>
 
 </head>
 
 <body>
-    <div class="container">
+    <div class="container conteiner--dark">
+        <button class=" button button--white js-colorName">ON</button>
         <form class="container-form js-form">
+           <fieldset class="form__fieldset"> 
             <input class="form__input js-newTask" type="text" name="" value=""  > 
             <button class="form__button js-button">Dodaj zadanie</button>
+           </fieldset>
         </form>
         <section class="content-section">
-            <ul class="section__list js-tasks"></ul>
+            <fieldset class="section__fieldset">
+                 <ul class="section__list js-tasks"></ul>
+            </fieldset>
+           
         </section>
     </div>
 </body>

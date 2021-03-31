@@ -8,6 +8,14 @@
     window.addEventListener("load", function () {
         console.log("The page has loaded")
     });
+    // 
+    const mode = () => {
+        const conteiner__dark = document.querySelector(".conteiner--dark");  
+        conteiner__dark.classList.toggle("conteiner--white");
+        button__White.classList.toggle("button--dark");     
+    }
+    const button__White = document.querySelector(".button--white")
+    button__White.addEventListener("click", mode);
     // lista z objektami 
     const ListWithObjects = [
         {
@@ -24,7 +32,7 @@
         let htmlString = ""
         for (ListWithObject of ListWithObjects) {
             htmlString += `
-            <li ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
+            <li class= "section__listObject" ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
             <button class="js-remove">usuń</button>
             ${ListWithObject.volume}
 
