@@ -1,21 +1,20 @@
 {
-    // min 16:32 c.d
-    // przywitanie
-    const SayHello = () => {
-        console.log("Welcome in To to list")
-    }
-    // załadowanie strony mogło by być przywitaniem
+    
+
+    // załadowanie strony i przywitanie
     window.addEventListener("load", function () {
-        console.log("The page has loaded")
+        console.log("The page has loaded... Welcome in To do list")
     });
-    // 
+    // zmiana tła
     const mode = () => {
-        const conteiner__dark = document.querySelector(".conteiner--dark");  
+        const conteiner__dark = document.querySelector(".conteiner--dark");
         conteiner__dark.classList.toggle("conteiner--white");
-        button__White.classList.toggle("button--dark");     
+        button__White.classList.toggle("button--dark");
     }
     const button__White = document.querySelector(".button--white")
     button__White.addEventListener("click", mode);
+
+
     // lista z objektami 
     const ListWithObjects = [
         {
@@ -27,53 +26,71 @@
             done: true,
         },
     ];
-// renderowanie 
+
+    // pusch dodawanie do listy
+    const addNewTask = (newTaskVolume) => {
+        ListWithObjects.push({
+            volume: newTaskVolume,
+        })
+        render();
+    }
+    // usuwanie
+    const removeTask = (index) => {
+        ListWithObjects.splice(index, 1);
+        render();
+    }
+    const toogleDoneTask = (index) => {
+        ListWithObjects[index].done = !ListWithObjects[index].done;
+        render();
+    }
+    // renderowanie 
     const render = () => {
         let htmlString = ""
         for (ListWithObject of ListWithObjects) {
             htmlString += `
             <li class= "section__listObject" ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
-            <button class="js-remove">usuń</button>
+            <button class="js-done">zrobione</button>
             ${ListWithObject.volume}
-
+             <button class="js-remove">usuń</button>
             </li>
             `;
         };
+
         //  iterowanie forEach i usuwanie -- splice zadń
         document.querySelector(".js-tasks").innerHTML = htmlString;
         const removeButtons = document.querySelectorAll(".js-remove");
         console.log(removeButtons);
         removeButtons.forEach((removeButton, index) => {
             removeButton.addEventListener("click", () => {
-                ListWithObjects.splice(index, 1);
-                render();
+                removeTask(index);
             });
         });
+         //  odznaczanie wykonanego
+         const toogledoneButtons = document.querySelectorAll(".js-done");
+         console.log(toogledoneButtons);
+         toogledoneButtons.forEach((toogledoneButton, index) => {
+             toogledoneButton.addEventListener("click", () => {
+                 toogleDoneTask(index);
+             });
+         });
     };
     // tu łapiemy input
     const onFormSubmit = (event) => {
         event.preventDefault();
         const newTaskVolume = document.querySelector(".js-newTask").value.trim();
         console.log(newTaskVolume);
-        if ( newTaskVolume === "") {
+        if (newTaskVolume === "") {
             return;
         }
         addNewTask(newTaskVolume);
     }
-    // pusch dodawanie do listy
-     const addNewTask = (newTaskVolume) => {
-        ListWithObjects.push({
-            volume: newTaskVolume,
-        })
-        render();
-     }
+
 
     const init = () => {
-        SayHello();
         render();
         // tu wczeńniej była finkcja onFormSubmit po submit
         const form = document.querySelector(".js-form");
-        form.addEventListener("submit", onFormSubmit );
+        form.addEventListener("submit", onFormSubmit);
 
     }
     init();
