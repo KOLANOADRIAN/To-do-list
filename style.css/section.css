@@ -29,6 +29,22 @@
 }
 .section__listObject {
     text-align: left;
-    
 
+}
+
+.list__button--done {
+    border:none;
+    background-color: green;
+    padding: 5px;
+}
+.list__button--done:hover {
+    background-color: rgb(5, 97, 5);
+}
+.list__button--remove {
+    border:none;
+    background-color: rgba(238, 49, 49, 0.849);
+    padding: 5px 10px;
+}
+.list__button--remove:hover {
+    background-color: rgba(190, 22, 22, 0.849);
 }

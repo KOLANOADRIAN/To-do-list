@@ -1,5 +1,5 @@
 {
-    
+
 
     // załadowanie strony i przywitanie
     window.addEventListener("load", function () {
@@ -26,8 +26,8 @@
             done: true,
         },
     ];
-     // tu łapiemy input
-     const onFormSubmit = (event) => {
+    // tu łapiemy input
+    const onFormSubmit = (event) => {
         event.preventDefault();
         const newTaskVolume = document.querySelector(".js-newTask").value.trim();
         console.log(newTaskVolume);
@@ -43,11 +43,7 @@
         })
         render();
     }
-    // usuwanie
-    const removeTask = (index) => {
-        ListWithObjects.splice(index, 1);
-        render();
-    }
+
     const toogleDoneTask = (index) => {
         ListWithObjects[index].done = !ListWithObjects[index].done;
         render();
@@ -57,11 +53,11 @@
         let htmlString = ""
         for (ListWithObject of ListWithObjects) {
             htmlString += `
-            <button class="js-done">zrobione</button>
+            <button class="list__button--done js-done">zrobione</button>
             <li class= "section__listObject" ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
             ${ListWithObject.volume}
             </li>
-            <button class="js-remove">usuń</button>
+            <button class="list__button--remove js-remove" > 🗑 </button>
             `;
         };
 
@@ -74,16 +70,23 @@
                 removeTask(index);
             });
         });
-         //  odznaczanie wykonanego
-         const toogledoneButtons = document.querySelectorAll(".js-done");
-         console.log(toogledoneButtons);
-         toogledoneButtons.forEach((toogledoneButton, index) => {
-             toogledoneButton.addEventListener("click", () => {
-                 toogleDoneTask(index);
-             });
-         });
+        // usuwanie
+        const removeTask = (index) => {
+            ListWithObjects.splice(index, 1);
+            render();
+        }
+
+        //  odznaczanie wykonanego
+        const toogledoneButtons = document.querySelectorAll(".js-done");
+        console.log(toogledoneButtons);
+        toogledoneButtons.forEach((toogledoneButton, index) => {
+            toogledoneButton.addEventListener("click", () => {
+                toogleDoneTask(index);
+            });
+        });
+
     };
-   
+
 
 
     const init = () => {

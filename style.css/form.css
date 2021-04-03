@@ -5,10 +5,22 @@
     grid-gap: 10px;
     padding: 10px 20px;
 }
-
+@media (max-width:767px) {
+    .section-form {
+       grid-template-columns: 1fr;
+        
+ }}
 .form__input {
      padding: 10px;
 }
 .form__button {
+    border:none;
+    border-radius: 2px;
+    background-color: rgb(25, 133, 34);
+    color: cornsilk;
+    transition: 1s;
+}
+.form__button:hover {
+    transform: scale(1.2);
 
 }
