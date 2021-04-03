@@ -14,27 +14,31 @@
     const button__dark = document.querySelector(".button--dark")
     button__dark.addEventListener("click", mode);
 
-
+    const form__input = document.querySelector(".form__input");
     // lista z objektami 
     const ListWithObjects = [
-        {
-            volume: "wykonać listę zadań samodzielnie",
-            done: false,
-        },
-        {
-            volume: "zjeść pierogi",
-            done: true,
-        },
+        // {
+        //     volume: "wykonać listę zadań samodzielnie",
+        //     done: false,
+        // },
+        // {
+        //     volume: "zjeść pierogi",
+        //     done: true,
+        // },
     ];
     // tu łapiemy input
+    
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const newTaskVolume = document.querySelector(".js-newTask").value.trim();
+        const newTaskVolume = document.querySelector(".js-newTask").value.trim(); 
         console.log(newTaskVolume);
         if (newTaskVolume === "") {
             return;
+        } else {
+            resetForm();
         }
         addNewTask(newTaskVolume);
+        form__input.focus();
     }
     // pusch dodawanie do listy
     const addNewTask = (newTaskVolume) => {
@@ -48,6 +52,10 @@
         ListWithObjects[index].done = !ListWithObjects[index].done;
         render();
     }
+    const jsForm = document.querySelector(".js-form");
+    const resetForm = () => {
+        jsForm.reset();
+    } 
     // renderowanie 
     const render = () => {
         let htmlString = ""
@@ -91,7 +99,7 @@
 
     const init = () => {
         render();
-        // tu wczeńniej była finkcja onFormSubmit po submit
+        // tu wczeńniej była funkcja onFormSubmit po submit
         const form = document.querySelector(".js-form");
         form.addEventListener("submit", onFormSubmit);
 
