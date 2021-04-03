@@ -25,16 +25,19 @@
 </head>
 
 <body>
-    <div class="container conteiner--dark">
-        <button class=" button button--white js-colorName">ON</button>
+    <div class="container conteiner--white">
+        <button class="button button--dark js-colorName">ON</button>
         <h1 class="container__caption">Lista zadań</h1>
-        <form class="container-form js-form">
-            <h2 class="form__caption">Dodaj nowe zadanie</h2>
-            <input class="form__input js-newTask" type="text" placeholder="Dodaj nowe zadanie" name="" value=""  > 
-            <button class="form__button js-button">Dodaj zadanie</button>
-        </form>
-        <section class="content-section">
-                 <ul class="section__list js-tasks"></ul> 
+            <section class="content-section content-section--input">
+                <h2 class="section__caption">Dodaj nowe zadanie</h2>
+                <form class="section-form js-form">
+                    <input class="form__input js-newTask" type="text" placeholder="Co jest do zrobienia" >
+                    <button class="form__button js-button">Dodaj zadanie</button>
+                </form>
+            </section>
+        <section class="content-section content-section--result">
+            <h1 class="section__caption">Lista zadań</h1>
+            <ul class="section__list js-tasks"></ul>
         </section>
     </div>
 </body>

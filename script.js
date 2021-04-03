@@ -7,12 +7,12 @@
     });
     // zmiana tła
     const mode = () => {
-        const conteiner__dark = document.querySelector(".conteiner--dark");
-        conteiner__dark.classList.toggle("conteiner--white");
-        button__White.classList.toggle("button--dark");
+        const conteiner__white = document.querySelector(".conteiner--white");
+        conteiner__white.classList.toggle("conteiner--dark");
+        button__dark.classList.toggle("button--white");
     }
-    const button__White = document.querySelector(".button--white")
-    button__White.addEventListener("click", mode);
+    const button__dark = document.querySelector(".button--dark")
+    button__dark.addEventListener("click", mode);
 
 
     // lista z objektami 
@@ -26,7 +26,16 @@
             done: true,
         },
     ];
-
+     // tu łapiemy input
+     const onFormSubmit = (event) => {
+        event.preventDefault();
+        const newTaskVolume = document.querySelector(".js-newTask").value.trim();
+        console.log(newTaskVolume);
+        if (newTaskVolume === "") {
+            return;
+        }
+        addNewTask(newTaskVolume);
+    }
     // pusch dodawanie do listy
     const addNewTask = (newTaskVolume) => {
         ListWithObjects.push({
@@ -48,11 +57,11 @@
         let htmlString = ""
         for (ListWithObject of ListWithObjects) {
             htmlString += `
-            <li class= "section__listObject" ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
             <button class="js-done">zrobione</button>
+            <li class= "section__listObject" ${ListWithObject.done ? "style= \"text-decoration: line-through\"" : ""}>
             ${ListWithObject.volume}
-             <button class="js-remove">usuń</button>
             </li>
+            <button class="js-remove">usuń</button>
             `;
         };
 
@@ -74,16 +83,7 @@
              });
          });
     };
-    // tu łapiemy input
-    const onFormSubmit = (event) => {
-        event.preventDefault();
-        const newTaskVolume = document.querySelector(".js-newTask").value.trim();
-        console.log(newTaskVolume);
-        if (newTaskVolume === "") {
-            return;
-        }
-        addNewTask(newTaskVolume);
-    }
+   
 
 
     const init = () => {
